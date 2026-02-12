@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль | MMDK</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com">
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-size: 16px; }
+        .profile-card { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
+        .avatar { width: 100px; height: 100px; background: #007bff; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; margin: 0 auto 20px; }
+        h1 { margin: 10px 0; font-size: 24px; }
+        p { color: #666; margin-bottom: 30px; }
+        .info-row { text-align: left; background: #f8f9fa; padding: 15px; border-radius: 8px; margin-bottom: 10px; font-size: 15px; }
+        .btn-logout { display: block; width: 100%; padding: 12px; background: #dc3545; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 20px; transition: 0.3s; }
+        .btn-logout:hover { background: #c82333; }
+    </style>
+</head>
+<body>
+    <div class="profile-card">
+        <div class="avatar">{{ user['username'][0].upper() }}</div>
+        <h1>Привет, {{ user['username'] }}!</h1>
+        <p>Добро пожаловать в MMDK Messenger</p>
+        
+        <div class="info-row"><strong>Email:</strong> {{ user['email'] }}</div>
+        <div class="info-row"><strong>ID:</strong> #{{ user['id'] }}</div>
+        <div class="info-row"><strong>В системе с:</strong> {{ user['created_at'][:10] }}</div>
+        
+        <a href="{{ url_for('logout') }}" class="btn-logout">Выйти из аккаунта</a>
+    </div>
+</body>
+</html>
